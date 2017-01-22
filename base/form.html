@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>First Form</title>
+</head>
+<body>
+	<form action="server/form.php" method="post">
+		<p>name: <input type="text" name="user_name" /> </p>
+		<p>from: <input type="text" name="home_town" /> </p>
+		<p>
+			gender: <input type="radio" name="gender" value="male" />男
+			<input type="radio" name="gender" value="female" />女	 
+		</p>
+		<p>intresting: 
+			<input type="checkbox" name="hobby[]" value="reading" /> 阅读
+			<input type="checkbox" name="hobby[]" value="travel"/> 旅游
+			<input type="checkbox" name="hobby[]" value="sport"/> 运动
+			<input type="checkbox" name="hobby[]" value="internet"/> 上网
+		</p>
+		<p>occupation:
+			<select name="occup">
+				<option value="engineer">工程师</option>
+				<option value="teacher">教师</option>
+				<option value="doctor">医生</option>
+				<option value="others">其他</option>
+			</select>
+		</p>
+		<p><input type="submit" value="提交" /></p>
+	</form>	
+</body>
+</html>

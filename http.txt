@@ -1,0 +1,3 @@
+some contents
+new line
+test for 中文
