@@ -1,15 +1,30 @@
 <?php
-$link = mysqli_connect("120.76.77.90", "ubx", "Ubt123654");
+$host = '127.0.0.1';
+$user_name = 'root';
+$password = 'root';
 
-if (!$link) {
-    echo "Error: Unable to connect to MySQL." . PHP_EOL;
-    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
-    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
-    exit;
+$conn = mysqli_connect($host, $user_name, $password);
+
+if(!$conn){
+    die('数据库连接失败: '.mysql_error());
 }
 
-echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
-echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+echo "数据库连接成功!";
 
-mysqli_close($link);
+mysqli_select_db($conn, "mybatis");
+
+$sql = "select c_id, c_name, teacher_id from class";
+$result = mysqli_query($conn, $sql);
+
+if($result){
+    echo 'SQL语句：'.$sql.'<br/>已经成功执行！';
+    $num = mysqli_num_rows($result);
+    echo '<br/>该SQL语句查询到<b>'.$num.'</b>行数据';
+}
+
+if(mysqli_close($conn)){
+    echo "<br/>......<br/><br/>";
+    echo "数据库连接已经成功关闭";
+}
+
 ?>
