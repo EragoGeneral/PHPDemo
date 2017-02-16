@@ -57,7 +57,8 @@ if($page == $page_count || $page_count ==0){
     $turn_page .= '<a href=statistics_data.php?page='.($page+1).'> 下一页 </a> | <a href=statistics_data.php?page='.$page_count.'> 尾页 </a>';
 }
 
-$sql = 'select id, name, count, updated_time from xz_games_statistics where name is not null limit '.($page-1)*$page_size.','.$page_size;
+mysqli_query($conn, "set names 'utf8'");
+$sql = 'SELECT s.id, s.name as code, l.name, s.count, s.updated_time FROM xz_games_statistics s LEFT JOIN xz_games_list l ON l.code = s.name WHERE s.name IS NOT NULL order by s.updated_time desc LIMIT '.($page-1)*$page_size.','.$page_size;
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -69,8 +70,8 @@ $result = mysqli_query($conn, $sql);
     <body center>
         <table align="center" width="75%" border="1" cellpadding="0" cellspacing="1" bgcolor="#7b7b84">
             <tr bgcolor="#8BBCC7">
-                <td height="33"><div align="center"><strong>ID</strong></div></td>
-                <td><div align="center"><strong>游戏名</strong></div></td>
+                <td height="33"><div align="center"><strong>编码</strong></div></td>
+                <td><div align="center"><strong>名称</strong></div></td>
                 <td><div align="center"><strong>访问次数</strong></div></td>
                 <td><div align="center"><strong>最后访问时间</strong></div></td>
             </tr>
@@ -79,7 +80,7 @@ $result = mysqli_query($conn, $sql);
                     while ($row = mysqli_fetch_array($result)){
             ?>
                         <tr bgcolor="#fffff">
-                            <td height="22" align="right"><?php echo $row['id']?>&nbsp;</td>
+                            <td height="22" align="right"><?php echo $row['code']?>&nbsp;</td>
                             <td height="22"><?php echo $row['name']?>&nbsp;</td>
                             <td height="22"><?php echo $row['count']?>&nbsp;</td>
                             <td height="22"><?php echo $row['updated_time']?>&nbsp;</td>
