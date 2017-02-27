@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
+encoding//base/server/image/ValidatorCode.html=UTF-8
 encoding//base/server/image/addText.php=GBK
 encoding//base/server/image/basic2.php=GBK
 encoding//base/server/image/president.php=GBK
+encoding//base/server/image/verifyCode.php=GBK
 encoding/<project>=UTF-8

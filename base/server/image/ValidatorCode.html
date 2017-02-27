@@ -1,0 +1,23 @@
+
+<html>
+<head>
+</head>
+<body>
+    <form id="form1" name="form1">
+	<input type="hidden" name="defValidatorCode" value="" />
+	<script type="text/javascript">  
+      var num1=Math.round(Math.random()*10000000);          //生成随机数  
+      var num=num1.toString().substr(0,4);                  //截取随机数的前4个字符  
+      document.write("<img name=codeimg src='ValidatorCode.php?code="+num+"'>"); //将截取值传递到图像处理页中  
+      form1.defValidatorCode.value=num;                     //将截取值赋给表单中的隐藏域  
+      function reCode(){                        //定义方法,重新生成验证码  
+           var num1=Math.round(Math.random()*10000000); //生成随机数  
+           var num=num1.toString().substr(0,4);         //截取随机数  
+           document.codeimg.src="ValidatorCode.php?code="+num;  ///将截取值传递到图像处理页中  
+           form1.defValidatorCode.value=num;                //将截取值赋给表单中的隐藏域           
+       }  
+    </script>
+    </form>
+	<a href="javascript:reCode()" class="a1">看不清</a>
+</body>
+</html>
